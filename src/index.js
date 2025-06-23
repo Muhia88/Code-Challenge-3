@@ -66,12 +66,12 @@ document.addEventListener("DOMContentLoaded", () => {
       postDetail.innerHTML = `
       <div class = "flex justify-between items-start mb-4">
         <div>
-          <h2 class="text-xl font-extrabold text-gray-900">${blogPost.title}</h2>
+          <h2 class="text-xl font-extrabold text-gray-800">${blogPost.title}</h2>
           <p class="text-md text-gray-500 mt-1">By ${blogPost.author}   &bull;${blogPost.date}</p>
         </div>
       </div>
       <img src="${blogPost.image}" alt="${blogPost.title}" class="w-full h-80 object-cover rounded-lg my-4">
-      <div class="prose max-w-none text-gray-700">
+      <div class="prose max-w-none text-gray-700 mb-8">
         ${blogPost.content}
       </div>
       <div class="actions flex gap-2">  
@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Handles adding of a new blog post
-  const handleAddNewPost = async (e) => {
+  const addNewPostListener = async (e) => {
     e.preventDefault();
     
     const dataInput = new FormData(addBlogForm);
@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Main function to initialize the application
   const main = () => {
     displayPosts();
-    addBlogForm.addEventListener("submit", handleAddNewPost);
+    addBlogForm.addEventListener("submit", addNewPostListener);
     const cancelAddBlog = document.querySelector("#cancel-blog");
     cancelAddBlog.addEventListener("click", () => {
         addBlogForm.reset();
