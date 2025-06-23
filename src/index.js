@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-  //intializing current blog post id
-  let currentBlogPostID = null; 
   
   //Element selection
   const postList = document.querySelector("#post-list"); 
@@ -11,38 +8,50 @@ document.addEventListener("DOMContentLoaded", () => {
   const modal = document.querySelector("#modal");
   const modalMessage = document.querySelector("#modal-message");
 
+  //intializing current blog post id
+  let currentBlogPostID = null; 
+
+
   //displayPosts function
   //Fetches all posts and displays them 
   const displayPosts = async() => {
     try{
+      //fetches posts
       const response = await fetch("http://localhost:3000/posts");
+      //checks if response has an error
       if(!response.ok) {
-        throw new Error("There was an error in fetching blog posts");
+        throw new Error(`There was an error in fetching blog posts. Status:${response.status}`);
       }
       const blogPosts = await response.json();
-
+      //inital setting of innerHTML to an empty string
       postList.innerHTML = "";
+      //setting number of blog posts
       postCount.textContent = `${blogPosts.length} posts`;
       blogPosts.forEach(post => {
+        //creating list element
         const li = document.createElement("li");
+        //setting data-id to list element
         li.dataset.id = post.id;
+        //populating list element
         li.innerHTML = `
         <div id = "post-title">${post.title} </div>
         <div id = "post-author">${post.author} </div>
         `;
-        li.addEventListener("click", () => handlePostClick(post.id)); // Corrected event listener attachment
+        li.addEventListener("click", () => handlePostClick(post.id)); 
+        //appends list element to ul
         postList.appendChild(li);
       });
-
+      //displays selected blog post
       if(currentBlogPostID && blogPosts.some(post => post.id == currentBlogPostID)){
           await handlePostClick(currentBlogPostID);
-        }else if(blogPosts.length > 0){
+        }else if(blogPosts.length > 0){//displays 1st blog post if non is selected
           await handlePostClick(blogPosts[0].id);
-        }else{
+        }else{//displays message if no blog posts are there
           postDetail.innerHTML = '<p class="text-gray-500">No posts available.</p>';
         }
     }catch (error){
       console.log("Error in displaying posts:", error);
+      //displays error
       showErrorNotification(error.message);
     }
   }
@@ -50,13 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
   //handlePostClick function
   //Displays blog post details
   async function handlePostClick(id){
-
     try{
       //fetch specific blog post
       const response = await fetch(`http://localhost:3000/posts/${id}`);
       //checks if fetching of blog had an error
       if(!response.ok) {
-          throw new Error("There was an Error in fetching blog post");
+          throw new Error(`There was an Error in fetching blog post. Status:${response.status}`);
         }
       const blogPost = await response.json();
       //sets current blog post id to the clicked one
@@ -64,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       //display post details
       postDetail.innerHTML = `
-      <div class = "flex justify-between items-start mb-4">
+      <div class = "items-start mb-4">
         <div>
           <h2 class="text-xl font-extrabold text-gray-800">${blogPost.title}</h2>
           <p class="text-md text-gray-500 mt-1">By ${blogPost.author}   &bull;${blogPost.date}</p>
@@ -83,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("edit-btn").addEventListener("click", () => editMode(blogPost));
       document.getElementById("delete-btn").addEventListener("click", () => deleteBlogPost(blogPost.id));
 
-      //adds "selected" class if id clicked matches the one on the list
+      //adds "selected" class if id clicked matches the one on the list(for styling)
       for(const li of postList.children){
         li.classList.toggle("selected", li.dataset.id == id);
       }
@@ -117,7 +125,9 @@ document.addEventListener("DOMContentLoaded", () => {
   //handleEditSubmit function
   //handles submission of edit details form
   const handleEditSubmit = async (e, id) => {
+    //prevents screen reload
     e.preventDefault();
+    //gets the blog form being edited and its values
     const blogForm = e.target;
     const updatedBlogPost = {
       title: blogForm.title.value,
@@ -133,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(updatedBlogPost)
       });
       if (!response.ok) {
-        throw new Error('Failed to update post.');
+        throw new Error(`Failed to update post. Status:${response.status}`);
       }
        // Refresh the view
       await handlePostClick(id);
@@ -155,15 +165,18 @@ document.addEventListener("DOMContentLoaded", () => {
   //deleteBlogPost function
   //handles deleting of a blog post
   async function deleteBlogPost(id){
-    if(confirm("Are you sure you want to delete this post")){
+    //confirms if user really wants to delete post
+    if(confirm("Are you sure you want to delete this post?")){
       try{
         const response = await fetch(`http://localhost:3000/posts/${id}`, {
           method: 'DELETE'
         });
         if (!response.ok){
-          throw new Error("There was error in deleting post");
+          throw new Error(`There was error in deleting post. Status:${response.status}`);
         }
+        //sets selected id to null
         currentBlogPostID = null;
+        //refreshes view
         await displayPosts();
       }catch(error){
         console.log("Error in deleting post:", error);
@@ -171,11 +184,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   }
-
+  //addNewPostListener() function
   // Handles adding of a new blog post
   const addNewPostListener = async (e) => {
+    //prevents reload of screen
     e.preventDefault();
-    
+    //gets form values using FormData class
     const dataInput = new FormData(addBlogForm);
     const newBlog = {
       title: dataInput.get("title"),
@@ -195,10 +209,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if(!response.ok){
-        throw new Error("There was an error in creating post.");
+        throw new Error(`There was an error in creating post. Status:${response.status}`);
       }
-      
+      //resets form
       addBlogForm.reset();
+      //refreshes display
       await displayPosts();
 
     }catch(error){
@@ -212,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.classList.remove("hidden");
     setTimeout(() => {
       modal.classList.add("hidden");
-    },3000);
+    },5000);
   }
 
   // Main function to initialize the application
