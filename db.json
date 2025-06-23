@@ -1,0 +1,25 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "The Rise of AI",
+      "content": "Artificial Intelligence is transforming our world. From machine learning to natural language processing, its applications are vast and growing every day. This post explores the current state and future potential of AI.",
+      "author": "Jane Doe",
+      "image": "https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 2,
+      "title": "A Guide to Sustainable Living",
+      "content": "Living sustainably is crucial for the health of our planet. This guide offers practical tips for reducing your carbon footprint, from zero-waste practices to renewable energy choices. Small changes can make a big difference.",
+      "author": "John Smith",
+      "image": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?q=80&w=2880&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 3,
+      "title": "The Art of Digital Painting",
+      "content": "Digital painting opens up a new realm of creativity for artists. This post delves into the tools and techniques used by digital artists to create stunning works of art, from choosing the right software to mastering brush settings.",
+      "author": "Emily White",
+      "image": "https://images.unsplash.com/photo-1505691938895-1758d7FEB511?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    }
+  ]
+}

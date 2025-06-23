@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Central</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class ="bg-gray-50 text-gray-800">
+  <!-- Handling Errors -->
+    <div id="modal" class="hidden fixed top-0 left-0 right-0 p-4 bg-red-600 text-white text-center shadow-lg">
+        <h2 class="font-bold">Error!</h2>
+        <p id="modal-message"></p>
+    </div>
+  <div class="container mx-auto p-8 pt-15">
+    <!-- Header -->
+    <header class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900">Content Central</h1>
+        <p class="text-lg text-gray-500 mt-2">Simple Modern Blog Manager</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Left Column: List of Posts and Add New Post -->
+      <div class="lg:col-span-1 space-y-6">
+        <!-- List of Posts -->
+        <div  class="bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex justify-between items-center mb-4">
+            <h2  class="text-xl font-bold">Blog Posts</h2>
+            <span id="post-count"  class="text-sm text-gray-500"></span>
+          </div>
+          <ul id="post-list" class="space-y-1">
+             <!-- Blog Posts will be dynamically inserted here -->
+          </ul>
+        </div>
+
+        <!-- Add New Post -->
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <p id="add-post-button" class="flex items-center text-lg font-semibold text-gray-700 w-full">
+          <i class="fas fa-plus-circle mr-3"></i> Add New Post
+          </p>
+          <form id="add-blog-form" class="mt-4 space-y-4" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="text" name="title" placeholder="Post Title..." required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="text" name="author" placeholder="Author Name..." required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="url" name="image" placeholder="Image URL..." required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <textarea name="content" placeholder="Write your post content..." required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+            <div>
+              <button type="submit" id="add-post-button" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-md">Add Post</button>
+              <button type="button" id="cancel-blog" class="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-md">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right Column: Post Details-->
+      <div class="lg:col-span-2">
+        <!-- Viewing Post Details -->
+        <div id="post-detail" class="bg-white p-8 rounded-lg shadow-sm min-h-[400px]">
+          <!-- Post details are displayed here -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="src/index.js"></script>
+</body>
+</html>
