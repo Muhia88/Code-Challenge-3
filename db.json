@@ -2,11 +2,27 @@
   "posts": [
     {
       "id": "1",
-      "title": "Rise of AII",
-      "content": "Artificial Intelligence is transforming our world. From machine learning to natural language processing, its applications are vast and growing every day. This post explores the current state and future potential of AI.",
-      "author": "Jane Doe",
-      "image": "https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "date": "21/06/2025"
+      "title": "B-2 Bomber Missions",
+      "content": "The B-2, a $2 billion flying wing built by Northrop Grumman (NOC.N), played a key role in delivering strikes on Iran's nuclear sites on Saturday. It demands extraordinary endurance from its two-person crew. That starts with understanding how nutrition affects alertness and digestion during intercontinental flights that can span nearly two full days.",
+      "author": "Mike Stone",
+      "image": "https://images.unsplash.com/photo-1663605171512-dd33e972e792?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "date": "23/06/2025"
+    },
+    {
+      "id": "2",
+      "title": "24 Hours of Le Mans",
+      "content": "24 Hours of Le Mans, probably the worlds best-known automobile race, run annually (with few exceptions) since 1923 at the Sarthe road-racing circuit, near Le Mans, France. Since 1928 the winner has been the car that travels the greatest distance in a 24-hour time period. The racing circuit is roughly 8.5 miles (13.6 km) long, and the race is run in June, on one of the shortest nights of the year. Le Mans is one of the eight races that compose the International Automobile Federation (Fédération Internationale de l Automobile; FIA) World Endurance Championship.",
+      "author": "The Editors of Encyclopedia Britannica",
+      "image": "https://images.unsplash.com/photo-1525284446782-ca419ed216ef?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "date": "15/06/2025"
+    },
+    {
+      "id": "3",
+      "title": "LLMs",
+      "content": "A large language model (LLM) is defined as a sophisticated artificial intelligence (AI) model that excels in natural language processing tasks. These models are designed to understand and generate human-like text based on the patterns and structures they have learned from vast training data.",
+      "author": "Vijay Kanade",
+      "image": "https://plus.unsplash.com/premium_photo-1683121710572-7723bd2e235d?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "date": "7/09/2023"
     }
   ]
 }
